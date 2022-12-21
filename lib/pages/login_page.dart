@@ -5,6 +5,7 @@ import 'package:qiita_kaisetsu/clients/qiita_client.dart';
 import 'package:qiita_kaisetsu/constraiants/app_color.dart';
 import 'package:qiita_kaisetsu/constraiants/app_text.dart';
 import 'package:qiita_kaisetsu/constraiants/font_family.dart';
+import 'package:qiita_kaisetsu/pages/feed_page.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
 class LoginPage extends StatefulWidget {
@@ -25,6 +26,16 @@ class _LoginPageState extends State<LoginPage> {
     final WebViewController controller = WebViewController();
     controller
       ..setJavaScriptMode(JavaScriptMode.unrestricted)
+      ..setNavigationDelegate(NavigationDelegate(
+          onNavigationRequest: (NavigationRequest request) async {
+        if (request.url
+            .startsWith("https://qiita.com/settings/applications?code")) {
+          Uri uri = Uri.parse(request.url);
+          await certification(uri);
+          return NavigationDecision.prevent;
+        }
+        return NavigationDecision.navigate;
+      }))
       ..loadRequest(Uri.parse(QiitaClient.displayAllowPage(state)));
     _controller = controller;
   }
@@ -65,5 +76,13 @@ class _LoginPageState extends State<LoginPage> {
       return char.codeUnitAt(n);
     });
     return String.fromCharCodes(codeUnits);
+  }
+
+  Future<void> certification(Uri uri) async {
+    final accessToken = await QiitaClient.issueAccessToken(uri, state);
+    QiitaClient.saveAccessToken(accessToken);
+
+    Navigator.of(context)
+        .pushReplacement(MaterialPageRoute(builder: (_) => const FeedPage()));
   }
 }
