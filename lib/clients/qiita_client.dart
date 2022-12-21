@@ -2,7 +2,7 @@ import 'package:qiita_kaisetsu/client_information.dart';
 
 class QiitaClient {
   static const clientId = ClientInformation.clientId;
-  final clientSecret = ClientInformation.clientSecret;
+  static const clientSecret = ClientInformation.clientSecret;
 
   static String displayAllowPage(String state) {
     const scope = "read_qiita%20write_qiita";
