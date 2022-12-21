@@ -2,10 +2,12 @@ import 'dart:convert';
 
 import 'package:http/http.dart' as http;
 import 'package:qiita_kaisetsu/client_information.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class QiitaClient {
   static const clientId = ClientInformation.clientId;
   static const clientSecret = ClientInformation.clientSecret;
+  static const key = "accessToken/qiita";
 
   static String displayAllowPage(String state) {
     const scope = "read_qiita%20write_qiita";
@@ -40,5 +42,10 @@ class QiitaClient {
     } else {
       throw Exception("accessToken couldn't issue");
     }
+  }
+
+  static Future<void> saveAccessToken(String accessToken) async {
+    SharedPreferences pref = await SharedPreferences.getInstance();
+    pref.setString(key, accessToken);
   }
 }
