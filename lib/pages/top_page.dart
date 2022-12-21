@@ -4,6 +4,7 @@ import 'package:qiita_kaisetsu/constraiants/app_color.dart';
 import 'package:qiita_kaisetsu/constraiants/app_text.dart';
 import 'package:qiita_kaisetsu/constraiants/font_family.dart';
 import 'package:qiita_kaisetsu/constraiants/image_path.dart';
+import 'package:qiita_kaisetsu/pages/login_page.dart';
 import 'package:qiita_kaisetsu/ui_components/button.dart';
 
 class TopPage extends StatelessWidget {
@@ -57,8 +58,9 @@ class TopPage extends StatelessWidget {
                           BorderRadius.vertical(top: Radius.circular(11)),
                     ),
                     builder: (BuildContext context) {
-                      return Container(
+                      return SizedBox(
                         height: MediaQuery.of(context).size.height * 0.95,
+                        child: const LoginPage(),
                       );
                     },
                   );
