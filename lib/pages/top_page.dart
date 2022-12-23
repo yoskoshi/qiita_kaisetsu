@@ -6,9 +6,9 @@ import 'package:qiita_kaisetsu/constraiants/app_color.dart';
 import 'package:qiita_kaisetsu/constraiants/app_text.dart';
 import 'package:qiita_kaisetsu/constraiants/font_family.dart';
 import 'package:qiita_kaisetsu/constraiants/image_path.dart';
-import 'package:qiita_kaisetsu/pages/feed_page.dart';
 import 'package:qiita_kaisetsu/pages/login_page.dart';
 import 'package:qiita_kaisetsu/providers/loading_notifier.dart';
+import 'package:qiita_kaisetsu/roots/root.dart';
 import 'package:qiita_kaisetsu/ui_components/button.dart';
 
 class TopPage extends ConsumerWidget {
@@ -81,7 +81,7 @@ class TopPage extends ConsumerWidget {
                 child: TextButton(
                   onPressed: () {
                     Navigator.of(context).pushReplacement(
-                        MaterialPageRoute(builder: (_) => const FeedPage()));
+                        MaterialPageRoute(builder: (_) => const Root()));
                   },
                   child: const Text(
                     AppText.withoutLogin,

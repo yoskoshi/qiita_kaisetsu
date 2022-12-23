@@ -8,8 +8,8 @@ import 'package:qiita_kaisetsu/clients/qiita_client.dart';
 import 'package:qiita_kaisetsu/constraiants/app_color.dart';
 import 'package:qiita_kaisetsu/constraiants/app_text.dart';
 import 'package:qiita_kaisetsu/constraiants/font_family.dart';
-import 'package:qiita_kaisetsu/pages/feed_page.dart';
 import 'package:qiita_kaisetsu/providers/loading_notifier.dart';
+import 'package:qiita_kaisetsu/roots/root.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
 class LoginPage extends ConsumerStatefulWidget {
@@ -110,6 +110,6 @@ class _LoginPageState extends ConsumerState<LoginPage> {
     QiitaClient.saveAccessToken(accessToken);
 
     Navigator.of(context)
-        .pushReplacement(MaterialPageRoute(builder: (_) => const FeedPage()));
+        .pushReplacement(MaterialPageRoute(builder: (_) => const Root()));
   }
 }
