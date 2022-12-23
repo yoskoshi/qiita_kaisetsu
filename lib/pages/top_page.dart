@@ -1,16 +1,21 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 import 'package:qiita_kaisetsu/constraiants/app_color.dart';
 import 'package:qiita_kaisetsu/constraiants/app_text.dart';
 import 'package:qiita_kaisetsu/constraiants/font_family.dart';
 import 'package:qiita_kaisetsu/constraiants/image_path.dart';
+import 'package:qiita_kaisetsu/pages/feed_page.dart';
 import 'package:qiita_kaisetsu/pages/login_page.dart';
+import 'package:qiita_kaisetsu/providers/loading_notifier.dart';
 import 'package:qiita_kaisetsu/ui_components/button.dart';
 
-class TopPage extends StatelessWidget {
+class TopPage extends ConsumerWidget {
   const TopPage({Key? key}) : super(key: key);
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final loading = ref.watch(loadingProvider);
     return Scaffold(
       body: Stack(
         children: [
@@ -74,7 +79,10 @@ class TopPage extends StatelessWidget {
                 width: double.infinity,
                 margin: const EdgeInsets.symmetric(horizontal: 40),
                 child: TextButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.of(context).pushReplacement(
+                        MaterialPageRoute(builder: (_) => const FeedPage()));
+                  },
                   child: const Text(
                     AppText.withoutLogin,
                     style: TextStyle(
@@ -89,6 +97,15 @@ class TopPage extends StatelessWidget {
               const SizedBox(height: 81),
             ],
           ),
+          if (loading)
+            Container(
+              height: double.infinity,
+              width: double.infinity,
+              color: AppColor.dividerColor,
+              child: const Center(
+                child: CupertinoActivityIndicator(),
+              ),
+            )
         ],
       ),
     );

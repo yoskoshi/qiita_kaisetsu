@@ -4,9 +4,12 @@ class FeedPage extends StatelessWidget {
   const FeedPage({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('FeedPage'),
+    return WillPopScope(
+      onWillPop: () async => false,
+      child: Scaffold(
+        appBar: AppBar(
+          title: const Text('FeedPage'),
+        ),
       ),
     );
   }
