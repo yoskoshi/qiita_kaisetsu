@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:qiita_kaisetsu/ui_components/upper_bar.dart';
 
 class FeedPage extends StatelessWidget {
   const FeedPage({Key? key}) : super(key: key);
@@ -6,9 +7,12 @@ class FeedPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return WillPopScope(
       onWillPop: () async => false,
-      child: Scaffold(
-        appBar: AppBar(
-          title: const Text('FeedPage'),
+      child: const Scaffold(
+        appBar: UpperBar(
+          appBarText: "Feed",
+          fontFamilyText: "Pacifico",
+          fontWeight: FontWeight.w400,
+          showSearchBar: true,
         ),
       ),
     );

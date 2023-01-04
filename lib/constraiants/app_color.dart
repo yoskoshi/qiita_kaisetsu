@@ -9,4 +9,6 @@ class AppColor {
   static const Color dividerColor = Color(0x4D000000);
   static const Color bottomNavigationBarSelectedColor = Color(0xFF74C13A);
   static const Color bottomNavigationBarUnSelectedColor = Color(0xFF828282);
+  static const Color searchTextColor = Color(0x993C3C43);
+  static const Color searchBarColor = Color(0x1F767680);
 }
