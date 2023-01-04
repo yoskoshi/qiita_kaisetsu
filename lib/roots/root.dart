@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:qiita_kaisetsu/constraiants/app_color.dart';
 import 'package:qiita_kaisetsu/constraiants/app_text.dart';
+import 'package:qiita_kaisetsu/pages/feed_page.dart';
 
 class Root extends StatefulWidget {
   const Root({Key? key}) : super(key: key);
@@ -12,9 +13,7 @@ class Root extends StatefulWidget {
 class _RootState extends State<Root> {
   int _selectedIndex = 0;
   static final List<Widget> _pageOptions = [
-    const Center(
-      child: Text('FeedPage'),
-    ),
+    const FeedPage(),
     const Center(
       child: Text('TagPage'),
     ),

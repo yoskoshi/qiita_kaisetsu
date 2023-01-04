@@ -8,4 +8,6 @@ class AppText {
   static const String labelTag = "タグ";
   static const String labelMyPage = "マイページ";
   static const String labelSetting = "設定";
+  static const String appBarFeed = "Feed";
+  static const String pacifico = "Pacifico";
 }
