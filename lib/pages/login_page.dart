@@ -22,6 +22,7 @@ class LoginPage extends ConsumerStatefulWidget {
 class _LoginPageState extends ConsumerState<LoginPage> {
   late final String state;
   late final WebViewController _controller;
+  int time = 0;
 
   @override
   void initState() {
