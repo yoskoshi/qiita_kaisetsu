@@ -23,6 +23,7 @@ class _LoginPageState extends ConsumerState<LoginPage> {
   late final String state;
   late final WebViewController _controller;
   int time = 0;
+  int height = 0;
 
   @override
   void initState() {
