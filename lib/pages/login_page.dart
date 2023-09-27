@@ -20,6 +20,7 @@ class LoginPage extends ConsumerStatefulWidget {
 }
 
 class _LoginPageState extends ConsumerState<LoginPage> {
+  String name = "";
   late final String state;
   late final WebViewController _controller;
   int time = 0;
